@@ -20,15 +20,21 @@ app.use(express.static(__dirname));
    MYSQL CONNECTIONS CONNECTION POOL DATA ENGINE INITIALIZATION
    ========================================================================== */
 const dbPool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'homehub_db',
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 4000,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+
+    ssl: {
+        minVersion: 'TLSv1.2',
+        rejectUnauthorized: false
+    },
+
     waitForConnections: true,
     connectionLimit: 12,
     queueLimit: 0
 });
-
 // Run an operational trace handshake instantly to confirm local database presence
 dbPool.getConnection((err, checkConnection) => {
     if (err) {
