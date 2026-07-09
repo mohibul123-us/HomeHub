@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Property Log Record | HomeHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--bg-light);">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-house-chimney" style="color:var(--accent-emerald); margin-right:8px; font-size:20px;"></i>Home<span>Hub</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rent.html">Rent</a>
+                <a href="sell.html" class="active">Sell</a>
+                <a href="projects.html">Projects</a>
+                <a href="agents.html">Agents</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="sell.html" class="btn btn-outline" style="border-color:var(--accent-emerald); color:var(--accent-emerald);">Add Listing +</a>
+                <a href="login.html" class="btn btn-primary"><i class="fa-regular fa-user" style="margin-right:8px;"></i>Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="wizard-card">
+            <div style="margin-bottom:30px; border-bottom:1px solid var(--border-color); padding-bottom:15px;">
+                <h2 style="font-size:22px; color:var(--primary-navy); font-weight:700;">Deploy Property Architectural Parameter Node</h2>
+                <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">Fill in the specific operational fields below to queue record indices into application registries.</p>
+            </div>
+
+            <form onsubmit="alert('Success! Architectural parameter payload queued. Terminal sync tracking active.'); this.reset(); return false;">
+                <div class="form-field-row">
+                    <div>
+                        <label class="form-field-label">Asset Title Listing Name</label>
+                        <input type="text" class="form-element-input" placeholder="e.g., Duplex Green Condo Tower Room" required>
+                    </div>
+                    <div>
+                        <label class="form-field-label">Geographic Address Location Tracking String</label>
+                        <input type="text" class="form-element-input" placeholder="e.g., Sector 7, Uttara, Dhaka" required>
+                    </div>
+                </div>
+
+                <div class="form-field-row">
+                    <div>
+                        <label class="form-field-label">Ecosystem Target Purpose Mode</label>
+                        <select class="form-element-input" required>
+                            <option value="For Rent">For Rent Structural Pool</option>
+                            <option value="For Sale">For Sale Asset Pool</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-field-label">Architecture Classification Type</label>
+                        <select class="form-element-input" required>
+                            <option value="Apartment">Apartment / Flat Asset</option>
+                            <option value="House">Residential Standalone House</option>
+                            <option value="Building">Commercial Corporate Block</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-field-row">
+                    <div>
+                        <label class="form-field-label">Price Matrix Value Token (BDT)</label>
+                        <input type="number" class="form-element-input" placeholder="e.g., 35000" required>
+                    </div>
+                    <div>
+                        <label class="form-field-label">Net Floor Dimension Area Space (Sqft)</label>
+                        <input type="number" class="form-element-input" placeholder="e.g., 1450" required>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:24px;">
+                    <label class="form-field-label">Complementary Technical Description Parameters</label>
+                    <textarea class="form-element-input" rows="4" placeholder="Detail thermal protection configurations, elevator systems, floor mappings or custom amenities layout details here..." style="font-family:inherit; resize:none;" required></textarea>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:12px; border-top:1px solid var(--border-color); padding-top:20px;">
+                    <button type="reset" class="btn btn-outline" style="padding:10px 24px;">Clear Fields</button>
+                    <button type="submit" class="btn btn-emerald" style="padding:10px 30px;">Transmit Payload Log</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Asset Logs Specification Profile | HomeHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--bg-light);">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-house-chimney" style="color:var(--accent-emerald); margin-right:8px; font-size:20px;"></i>Home<span>Hub</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rent.html">Rent</a>
+                <a href="sell.html">Sell</a>
+                <a href="projects.html">Projects</a>
+                <a href="agents.html">Agents</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="sell.html" class="btn btn-outline" style="border-color:var(--accent-emerald); color:var(--accent-emerald);">Add Listing +</a>
+                <a href="login.html" class="btn btn-primary"><i class="fa-regular fa-user" style="margin-right:8px;"></i>Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding:40px 0;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px;">
+            <div>
+                <span id="target-badge" class="badge-status badge-rent" style="position:static; display:inline-block; margin-bottom:8px;">For Rent</span>
+                <h1 id="target-title" style="font-size:26px; color:var(--primary-navy); font-weight:700;">Property Title Name</h1>
+                <p id="target-loc" style="color:var(--text-muted); font-size:14px; margin-top:4px;"><i class="fa-solid fa-location-dot"></i> Location Mapping String</p>
+            </div>
+            <div style="text-align:right;">
+                <div id="target-price" style="font-size:30px; font-weight:700; color:var(--accent-emerald);">৳ 0.00</div>
+                <div id="target-id" style="font-size:12px; color:var(--text-muted); margin-top:4px; font-weight:600;">ID REF: -</div>
+            </div>
+        </div>
+
+        <div class="matrix-gallery-frame">
+            <div class="gallery-primary-box"><img id="target-img" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Primary Asset Focus Image"></div>
+            <div class="gallery-thumbs-stack">
+                <div class="thumb-box"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=300&q=80" alt="Sub Matrix Block view"></div>
+                <div class="thumb-box"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=300&q=80" alt="Internal Matrix Layout view"></div>
+                <div class="thumb-box">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=300&q=80" alt="Infrastructure Balcony View">
+                    <div class="thumb-overlay-count">+10 Photos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-split-grid">
+            <section style="background:#ffffff; border:1px solid var(--border-color); border-radius:12px; padding:30px;">
+                <h3 style="font-size:18px; font-weight:700; color:var(--primary-navy); margin-bottom:12px;">Property Description Layout</h3>
+                <p style="color:var(--text-slate); font-size:14px; line-height:1.7; margin-bottom:30px;">A spacious and pristine real estate environment cataloged under accredited tracking infrastructure indices. Close to schools, colleges, medical networks, and high-capacity corporate communication loop systems.</p>
+                
+                <h3 style="font-size:18px; font-weight:700; color:var(--primary-navy); margin-bottom:16px; border-top:1px solid var(--border-color); padding-top:20px;">Technical Parameter Spec Table Matrix</h3>
+                <div class="specifications-table-grid">
+                    <div class="spec-table-row"><span class="spec-label">Property Code Reference</span><span class="spec-value" id="spec-id">-</span></div>
+                    <div class="spec-table-row"><span class="spec-label">Architecture Classification</span><span class="spec-value" id="spec-type">-</span></div>
+                    <div class="spec-table-row"><span class="spec-label">Net Floor Dimension Area</span><span class="spec-value" id="spec-area">-</span></div>
+                    <div class="spec-table-row"><span class="spec-label">Bedrooms Count Metric</span><span class="spec-value" id="spec-beds">-</span></div>
+                    <div class="spec-table-row"><span class="spec-label">Bathrooms Count Metric</span><span class="spec-value" id="spec-baths">-</span></div>
+                    <div class="spec-table-row"><span class="spec-label">Ecosystem Target Purpose</span><span class="spec-value" id="spec-purpose">-</span></div>
+                </div>
+            </section>
+
+            <aside class="agent-action-card">
+                <h3 style="font-size:15px; font-weight:700; color:var(--primary-navy); margin-bottom:15px;">Assigned Field Advisor Consultant</h3>
+                <div class="agent-header-row">
+                    <div class="agent-avatar-circle"><img id="agent-avatar" src="images/agent1.jpg" alt="Broker Representative Portrait"></div>
+                    <div>
+                        <h4 id="agent-name" style="font-size:15px; font-weight:700; color:var(--primary-navy);">Shakib Hasan</h4>
+                        <p style="font-size:12px; color:var(--accent-emerald); font-weight:600;"><i class="fa-solid fa-user-shield"></i> Verified Broker Representative</p>
+                    </div>
+                </div>
+                <form onsubmit="alert('Success! Communication link initialized. Advisor will review tracking logs.'); this.reset(); return false;" style="display:flex; flex-direction:column; gap:12px;">
+                    <input type="text" placeholder="Your Identity Full Name" class="filter-text-input" style="padding:11px;" required>
+                    <input type="email" placeholder="Electronic Communications Route" class="filter-text-input" style="padding:11px;" required>
+                    <textarea placeholder="State custom specifications or schedule an on-site asset parameters survey allotments review request..." rows="4" class="filter-text-input" style="padding:11px; font-family:inherit; resize:none;" required></textarea>
+                    <button type="submit" class="btn btn-emerald" style="width:100%; padding:12px; justify-content:center;"><i class="fa-regular fa-envelope" style="margin-right:8px;"></i>Send Message</button>
+                </form>
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        const propertyDatabaseArray = [
+            { id: "HH-12568", title: "Modern Apartment in Dhanmondi", location: "Dhanmondi, Dhaka", type: "Apartment", purpose: "For Rent", price: "25,000 / month", area: "1200 Sqft", beds: "3", baths: "2", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80", agent: "Shakib Hasan", avatar: "images/agent1.jpg" },
+            { id: "HH-94310", title: "Beautiful House in Bashundhara", location: "Bashundhara R/A, Dhaka", type: "House", purpose: "For Sale", price: "85,000,000", area: "2000 Sqft", beds: "4", baths: "3", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80", agent: "Nusrat Jahan", avatar: "images/agent2.jpg" },
+            { id: "HH-44129", title: "Luxury Flat in Uttara", location: "Uttara, Dhaka", type: "Apartment", purpose: "For Rent", price: "35,000 / month", area: "1500 Sqft", beds: "3", baths: "2", img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=500&q=80", agent: "Aminul Islam", avatar: "images/agent3.jpg" },
+            { id: "HH-77215", title: "Commercial Building in Motijheel", location: "Motijheel, Dhaka", type: "Building", purpose: "For Sale", price: "550,000,000", area: "10000 Sqft", beds: "0", baths: "6", img: "https://images.unsplash.com/photo-1590608897129-79da98d15969?auto=format&fit=crop&w=500&q=80", agent: "Farhan Ahmed", avatar: "images/agent4.jpg" }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const pid = new URLSearchParams(window.location.search).get('id') || 'HH-12568';
+            const node = propertyDatabaseArray.find(item => item.id === pid) || propertyDatabaseArray[0];
+
+            document.getElementById('target-title').innerText = node.title;
+            document.getElementById('target-loc').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${node.location}`;
+            document.getElementById('target-price').innerText = `৳ ${node.price}`;
+            document.getElementById('target-id').innerText = `ID REF: ${node.id}`;
+            document.getElementById('target-img').src = node.img;
+
+            const badge = document.getElementById('target-badge');
+            badge.innerText = node.purpose;
+            badge.className = `badge-status ${node.purpose === 'For Rent' ? 'badge-rent' : 'badge-sale'}`;
+
+            document.getElementById('spec-id').innerText = node.id;
+            document.getElementById('spec-type').innerText = node.type;
+            document.getElementById('spec-area').innerText = node.area;
+            document.getElementById('spec-beds').innerText = node.beds;
+            document.getElementById('spec-baths').innerText = node.baths;
+            document.getElementById('spec-purpose').innerText = node.purpose;
+
+            document.getElementById('agent-name').innerText = node.agent;
+            document.getElementById('agent-avatar').src = node.avatar;
+        });
+    </script>
+</body>
+</html>

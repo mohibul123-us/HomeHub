@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeHub | Premier Real Estate Architecture Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-house-chimney" style="color:var(--accent-emerald); margin-right:8px; font-size:20px;"></i>Home<span>Hub</span></a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="rent.html">Rent</a>
+                <a href="sell.html">Sell</a>
+                <a href="projects.html">Projects</a>
+                <a href="agents.html">Agents</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="sell.html" class="btn btn-outline" style="border-color:var(--accent-emerald); color:var(--accent-emerald);">Add Listing +</a>
+                <a href="login.html" class="btn btn-primary"><i class="fa-regular fa-user" style="margin-right:8px;"></i>Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="container">
+            <h1>Find Your Next Perfect Living Ecosystem</h1>
+            <p>Explore architectural parameters across luxury residential units and verified properties monitored by accredited agents.</p>
+            
+            <div class="search-dock">
+                <div class="search-tabs">
+                    <button class="search-tab-btn active" id="btn-rent-tab" onclick="setSearchPurpose('For Rent')">Rent Space</button>
+                    <button class="search-tab-btn" id="btn-sale-tab" onclick="setSearchPurpose('For Sale')">Buy Asset</button>
+                </div>
+                <div class="search-fields-row">
+                    <div class="search-input-group">
+                        <select id="search-zone">
+                            <option value="">Select Target Location</option>
+                            <option value="Dhanmondi">Dhanmondi, Dhaka</option>
+                            <option value="Bashundhara">Bashundhara R/A</option>
+                            <option value="Uttara">Uttara, Dhaka</option>
+                            <option value="Motijheel">Motijheel, Dhaka</option>
+                        </select>
+                    </div>
+                    <div class="search-input-group">
+                        <select id="search-type">
+                            <option value="">Asset Architecture Type</option>
+                            <option value="Apartment">Apartment / Flat</option>
+                            <option value="House">Residential House</option>
+                            <option value="Building">Commercial Complex</option>
+                        </select>
+                    </div>
+                    <button onclick="triggerQuickSearch()" class="btn btn-emerald" style="height:48px; padding:0 24px;"><i class="fa-solid fa-magnifying-glass" style="margin-right:8px;"></i>Execute Query</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding:60px 0 30px;">
+        <div style="text-align:center; margin-bottom:35px;">
+            <h2 style="font-size:24px; color:var(--primary-navy); font-weight:700;">Browse Real Estate Categories</h2>
+            <p style="font-size:14px; color:var(--text-muted);">Select an architectural structure category node below to scan records immediately.</p>
+        </div>
+        <div class="category-row">
+            <a href="rent.html?type=Apartment" class="category-card"><i class="fa-solid fa-building"></i><h4>Apartments</h4><span>Verified Flats</span></a>
+            <a href="rent.html?type=House" class="category-card"><i class="fa-solid fa-house"></i><h4>Houses</h4><span>Duplex Homes</span></a>
+            <a href="rent.html?type=Building" class="category-card"><i class="fa-solid fa-city"></i><h4>Buildings</h4><span>Commercial Block</span></a>
+            <a href="projects.html" class="category-card"><i class="fa-solid fa-map-location-dot"></i><h4>Megastructures</h4><span>Off-Plan Towers</span></a>
+        </div>
+    </section>
+
+    <section class="container" style="padding:30px 0 60px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:30px;">
+            <div>
+                <h2 style="font-size:24px; color:var(--primary-navy); font-weight:700;">Featured Property Portfolios</h2>
+                <p style="font-size:14px; color:var(--text-muted);">Verified property structural parameter nodes actively recorded in system indices.</p>
+            </div>
+            <a href="rent.html" class="btn btn-outline">View All Listings <i class="fa-solid fa-arrow-right" style="margin-left:8px;"></i></a>
+        </div>
+
+        <div class="grid-layout-3">
+            <a href="details.html?id=HH-12568" class="property-listing-card">
+                <div class="card-image-frame">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80" alt="Dhanmondi Flat Parameter">
+                    <span class="badge-status badge-rent">For Rent</span>
+                </div>
+                <div class="card-body-metrics">
+                    <div class="card-metric-price">৳ 25,000 <span style="font-size:12px; color:var(--text-muted); font-weight:400;">/ month</span></div>
+                    <div class="card-metric-title">Modern Apartment in Dhanmondi</div>
+                    <div class="card-metric-location"><i class="fa-solid fa-location-dot"></i> Dhanmondi, Dhaka</div>
+                    <div class="card-spec-row">
+                        <span><i class="fa-solid fa-bed"></i> 3 Beds</span>
+                        <span><i class="fa-solid fa-bath"></i> 2 Baths</span>
+                        <span><i class="fa-solid fa-vector-square"></i> 1200 Sqft</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="details.html?id=HH-94310" class="property-listing-card">
+                <div class="card-image-frame">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" alt="Bashundhara Asset Parameter">
+                    <span class="badge-status badge-sale">For Sale</span>
+                </div>
+                <div class="card-body-metrics">
+                    <div class="card-metric-price">৳ 85,000,000</div>
+                    <div class="card-metric-title">Beautiful House in Bashundhara</div>
+                    <div class="card-metric-location"><i class="fa-solid fa-location-dot"></i> Bashundhara R/A, Dhaka</div>
+                    <div class="card-spec-row">
+                        <span><i class="fa-solid fa-bed"></i> 4 Beds</span>
+                        <span><i class="fa-solid fa-bath"></i> 3 Baths</span>
+                        <span><i class="fa-solid fa-vector-square"></i> 2000 Sqft</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="details.html?id=HH-44129" class="property-listing-card">
+                <div class="card-image-frame">
+                    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=500&q=80" alt="Uttara Flat Parameter">
+                    <span class="badge-status badge-rent">For Rent</span>
+                </div>
+                <div class="card-body-metrics">
+                    <div class="card-metric-price">৳ 35,000 <span style="font-size:12px; color:var(--text-muted); font-weight:400;">/ month</span></div>
+                    <div class="card-metric-title">Luxury Flat in Uttara</div>
+                    <div class="card-metric-location"><i class="fa-solid fa-location-dot"></i> Uttara, Dhaka</div>
+                    <div class="card-spec-row">
+                        <span><i class="fa-solid fa-bed"></i> 3 Beds</span>
+                        <span><i class="fa-solid fa-bath"></i> 2 Baths</span>
+                        <span><i class="fa-solid fa-vector-square"></i> 1500 Sqft</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="trust-assurance-strip">
+            <div class="assurance-node">
+                <i class="fa-solid fa-user-shield"></i>
+                <div><h5>Verified Properties</h5><p>All structural logs checked by accredited advisors.</p></div>
+            </div>
+            <div class="assurance-node">
+                <i class="fa-solid fa-users"></i>
+                <div><h5>Trusted Agents</h5><p>Connect securely with verified regional consultants.</p></div>
+            </div>
+            <div class="assurance-node">
+                <i class="fa-solid fa-bolt"></i>
+                <div><h5>Easy Processing</h5><p>Simple pipeline loops manage database transaction paths.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let selectedPurpose = 'For Rent';
+
+        function setSearchPurpose(purpose) {
+            selectedPurpose = purpose;
+            document.getElementById('btn-rent-tab').classList.toggle('active', purpose === 'For Rent');
+            document.getElementById('btn-sale-tab').classList.toggle('active', purpose === 'For Sale');
+        }
+
+        function triggerQuickSearch() {
+            const zone = document.getElementById('search-zone').value;
+            const type = document.getElementById('search-type').value;
+            window.location.href = `rent.html?location=${encodeURIComponent(zone)}&type=${encodeURIComponent(type)}&purpose=${encodeURIComponent(selectedPurpose)}`;
+        }
+    </script>
+</body>
+</html>

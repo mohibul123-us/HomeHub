@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Console Hub | HomeHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--bg-light);">
+
+    <script>
+        if (localStorage.getItem('activeSessionToken') !== 'TRUE_VALIDATED') {
+            alert("Security Violation Lockout: Session verification token missing. Please sign in.");
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-house-chimney" style="color:var(--accent-emerald); margin-right:8px; font-size:20px;"></i>Home<span>Hub</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rent.html">Rent</a>
+                <a href="sell.html">Sell</a>
+                <a href="projects.html">Projects</a>
+                <a href="agents.html">Agents</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="sell.html" class="btn btn-outline" style="border-color:var(--accent-emerald); color:var(--accent-emerald);">Add Listing +</a>
+                <button onclick="terminateConsoleSession()" class="btn btn-primary" style="background-color:#dc2626;"><i class="fa-solid fa-power-off"></i> Exit Console</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-canvas">
+            
+            <aside class="dashboard-sidebar-menu">
+                <div style="text-align:center; padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:20px;">
+                    <div style="width:55px; height:55px; border-radius:50%; background:var(--accent-emerald); color:#ffffff; font-size:22px; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 10px;" id="profile-avatar-initials">U</div>
+                    <h4 style="font-size:14px; font-weight:700;" id="profile-display-name">Loading Profile...</h4>
+                    <span style="font-size:11px; color:#94a3b8;">Console Administrator</span>
+                </div>
+                <nav>
+                    <a href="#" class="dashboard-menu-link active"><i class="fa-solid fa-chart-pie"></i> Metrics Control Overview</a>
+                    <a href="rent.html" class="dashboard-menu-link"><i class="fa-solid fa-list-check"></i> Manage Relational Rows</a>
+                    <a href="sell.html" class="dashboard-menu-link"><i class="fa-solid fa-circle-plus"></i> Deploy Property Log</a>
+                    <a href="#" class="dashboard-menu-link" style="margin-top:60px; color:#f87171;" onclick="terminateConsoleSession()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Secure Disconnect</a>
+                </nav>
+            </aside>
+
+            <main style="flex:1; width:100%;">
+                <div style="margin-bottom:24px;">
+                    <h2 style="font-size:24px; font-weight:700; color:var(--primary-navy);">Console Control Center Analytics</h2>
+                    <p style="font-size:14px; color:var(--text-muted);">Real-time metrics tracking database rows and incoming platform leads.</p>
+                </div>
+
+                <div class="analytics-metrics-row">
+                    <div class="analytic-metric-card">
+                        <div class="metric-numeric" id="dash-total">4</div>
+                        <div class="metric-caption">Total System Rows</div>
+                    </div>
+                    <div class="analytic-metric-card">
+                        <div class="metric-numeric" style="color:var(--accent-emerald);" id="dash-rent">2</div>
+                        <div class="metric-caption">Active Rental Listings</div>
+                    </div>
+                    <div class="analytic-metric-card">
+                        <div class="metric-numeric" style="color:#2563eb;" id="dash-sale">2</div>
+                        <div class="metric-caption">Listed Assets For Sale</div>
+                    </div>
+                    <div class="analytic-metric-card">
+                        <div class="metric-numeric" style="color:#eab308;">1,840</div>
+                        <div class="metric-caption">Global Server Hits</div>
+                    </div>
+                </div>
+
+                <div style="background:#ffffff; border:1px solid var(--border-color); border-radius:12px; padding:24px; box-shadow:var(--shadow-sm); overflow-x:auto;">
+                    <h3 style="font-size:16px; font-weight:700; color:var(--primary-navy); margin-bottom:16px;">Active Ingested Property Logs Matrix</h3>
+                    <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
+                        <thead>
+                            <tr style="border-bottom:2px solid var(--border-color); color:var(--primary-navy); font-weight:700;">
+                                <th style="padding:12px 8px;">Code Identifier</th>
+                                <th style="padding:12px 8px;">Asset Title Name</th>
+                                <th style="padding:12px 8px;">Structural Type</th>
+                                <th style="padding:12px 8px;">Price Parameter</th>
+                                <th style="padding:12px 8px;">Assigned Field Broker</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashboard-rows-hook" style="color:var(--text-slate);">
+                            <tr style="border-bottom:1px solid var(--border-color);">
+                                <td style="padding:12px 8px; font-weight:600; color:var(--primary-navy);">HH-12568</td>
+                                <td style="padding:12px 8px;">Modern Apartment in Dhanmondi</td>
+                                <td style="padding:12px 8px;">Apartment (For Rent)</td>
+                                <td style="padding:12px 8px; font-weight:600;">৳ 25,000 / month</td>
+                                <td style="padding:12px 8px;">Shakib Hasan</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border-color);">
+                                <td style="padding:12px 8px; font-weight:600; color:var(--primary-navy);">HH-94310</td>
+                                <td style="padding:12px 8px;">Beautiful House in Bashundhara</td>
+                                <td style="padding:12px 8px;">House (For Sale)</td>
+                                <td style="padding:12px 8px; font-weight:600;">৳ 85,000,000</td>
+                                <td style="padding:12px 8px;">Nusrat Jahan</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border-color);">
+                                <td style="padding:12px 8px; font-weight:600; color:var(--primary-navy);">HH-44129</td>
+                                <td style="padding:12px 8px;">Luxury Flat in Uttara</td>
+                                <td style="padding:12px 8px;">Apartment (For Rent)</td>
+                                <td style="padding:12px 8px; font-weight:600;">৳ 35,000 / month</td>
+                                <td style="padding:12px 8px;">Aminul Islam</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border-color);">
+                                <td style="padding:12px 8px; font-weight:600; color:var(--primary-navy);">HH-77215</td>
+                                <td style="padding:12px 8px;">Commercial Building in Motijheel</td>
+                                <td style="padding:12px 8px;">Building (For Sale)</td>
+                                <td style="padding:12px 8px; font-weight:600;">৳ 550,000,000</td>
+                                <td style="padding:12px 8px;">Farhan Ahmed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <script>
+        // Hydrate Authorized Account Information Profile Strings instantly upon DOM loading
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentProfileUser = localStorage.getItem('activeProfileName') || 'Field User';
+            document.getElementById('profile-display-name').innerText = currentProfileUser;
+            document.getElementById('profile-avatar-initials').innerText = currentProfileUser.charAt(0).toUpperCase();
+        });
+
+        function terminateConsoleSession() {
+            // Drop variable clear indicators down the memory stack safely
+            localStorage.removeItem('activeSessionToken');
+            localStorage.removeItem('activeProfileName');
+            alert("Disconnect tracking clean sequence verified. Safe travel vector initialized.");
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

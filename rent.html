@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Listings Matrix | HomeHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--bg-light);">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-house-chimney" style="color:var(--accent-emerald); margin-right:8px; font-size:20px;"></i>Home<span>Hub</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rent.html" class="active">Rent</a>
+                <a href="sell.html">Sell</a>
+                <a href="projects.html">Projects</a>
+                <a href="agents.html">Agents</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="sell.html" class="btn btn-outline" style="border-color:var(--accent-emerald); color:var(--accent-emerald);">Add Listing +</a>
+                <a href="login.html" class="btn btn-primary"><i class="fa-regular fa-user" style="margin-right:8px;"></i>Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="rent-split-view">
+            
+            <aside class="filter-sidebar">
+                <h3 style="font-size:16px; color:var(--primary-navy); margin-bottom:20px; font-weight:700;"><i class="fa-solid fa-sliders" style="margin-right:8px;"></i>Filter Properties</h3>
+                
+                <div class="filter-group">
+                    <label>Target Location Region</label>
+                    <input type="text" id="filter-location" class="filter-text-input" placeholder="e.g., Dhanmondi">
+                </div>
+
+                <div class="filter-group">
+                    <label>Architecture Classification</label>
+                    <select id="filter-type" class="filter-text-input">
+                        <option value="">All Structural Types</option>
+                        <option value="Apartment">Apartment / Flat</option>
+                        <option value="House">Residential House</option>
+                        <option value="Building">Commercial Building</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Ecosystem Core Purpose</label>
+                    <select id="filter-purpose" class="filter-text-input">
+                        <option value="">Any Operational Mode</option>
+                        <option value="For Rent">For Rent Only</option>
+                        <option value="For Sale">For Sale Only</option>
+                    </select>
+                </div>
+
+                <button onclick="executeMatrixSearch()" class="btn btn-emerald" style="width:100%; justify-content:center; padding:12px; margin-top:10px;">Apply Active Filter</button>
+                <button onclick="resetMatrixFilters()" class="btn btn-outline" style="width:100%; justify-content:center; padding:10px; margin-top:8px; font-size:12px;">Reset Matrix Parameters</button>
+            </aside>
+
+            <section style="flex:1;">
+                <div style="margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
+                    <div style="font-size:14px; font-weight:600; color:var(--primary-navy);" id="results-count-lbl">Showing available catalog index entries...</div>
+                </div>
+
+                <div class="grid-layout-3" id="catalog-grid-anchor">
+                    </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        // Array matching server configurations for demonstration mapping logic
+        const propertyDatabaseArray = [
+            { id: "HH-12568", title: "Modern Apartment in Dhanmondi", location: "Dhanmondi", type: "Apartment", purpose: "For Rent", price: "25,000", area: "1200", beds: "3", baths: "2", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80" },
+            { id: "HH-94310", title: "Beautiful House in Bashundhara", location: "Bashundhara", type: "House", purpose: "For Sale", price: "85,000,000", area: "2000", beds: "4", baths: "3", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" },
+            { id: "HH-44129", title: "Luxury Flat in Uttara", location: "Uttara", type: "Apartment", purpose: "For Rent", price: "35,000", area: "1500", beds: "3", baths: "2", img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=500&q=80" },
+            { id: "HH-77215", title: "Commercial Building in Motijheel", location: "Motijheel", type: "Building", purpose: "For Sale", price: "550,000,000", area: "10000", beds: "0", baths: "6", img: "https://images.unsplash.com/photo-1590608897129-79da98d15969?auto=format&fit=crop&w=500&q=80" }
+        ];
+
+        function renderCatalogItems(items) {
+            const anchor = document.getElementById('catalog-grid-anchor');
+            document.getElementById('results-count-lbl').innerText = `Displaying ${items.length} Verified Operational Records`;
+            anchor.innerHTML = '';
+
+            if (items.length === 0) {
+                anchor.innerHTML = `<div style="grid-column:span 3; text-align:center; padding:40px; color:var(--text-muted);">No records cleared the applied tracking filters.</div>`;
+                return;
+            }
+
+            items.forEach(item => {
+                const badgeClass = item.purpose === 'For Rent' ? 'badge-rent' : 'badge-sale';
+                anchor.innerHTML += `
+                    <a href="details.html?id=${item.id}" class="property-listing-card">
+                        <div class="card-image-frame">
+                            <img src="${item.img}" alt="HomeHub Property Log Asset Card">
+                            <span class="badge-status ${badgeClass}">${item.purpose}</span>
+                        </div>
+                        <div class="card-body-metrics">
+                            <div class="card-metric-price">৳ ${item.price}</div>
+                            <div class="card-metric-title">${item.title}</div>
+                            <div class="card-metric-location"><i class="fa-solid fa-location-dot"></i> ${item.location}, Dhaka</div>
+                            <div class="card-spec-row">
+                                <span><i class="fa-solid fa-bed"></i> ${item.beds} Beds</span>
+                                <span><i class="fa-solid fa-bath"></i> ${item.baths} Baths</span>
+                                <span><i class="fa-solid fa-vector-square"></i> ${item.area} Sqft</span>
+                            </div>
+                        </div>
+                    </a>`;
+            });
+        }
+
+        function executeMatrixSearch() {
+            const locVal = document.getElementById('filter-location').value.toLowerCase().trim();
+            const typeVal = document.getElementById('filter-type').value;
+            const purpVal = document.getElementById('filter-purpose').value;
+
+            const filtered = propertyDatabaseArray.filter(item => {
+                const matchLoc = !locVal || item.location.toLowerCase().includes(locVal);
+                const matchType = !typeVal || item.type === typeVal;
+                const matchPurp = !purpVal || item.purpose === purpVal;
+                return matchLoc && matchType && matchPurp;
+            });
+
+            renderCatalogItems(filtered);
+        }
+
+        function resetMatrixFilters() {
+            document.getElementById('filter-location').value = '';
+            document.getElementById('filter-type').value = '';
+            document.getElementById('filter-purpose').value = '';
+            renderCatalogItems(propertyDatabaseArray);
+        }
+
+        // On Load Optimization Parser Tracking Parameters Loop
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if(params.get('location')) document.getElementById('filter-location').value = params.get('location');
+            if(params.get('type')) document.getElementById('filter-type').value = params.get('type');
+            if(params.get('purpose')) document.getElementById('filter-purpose').value = params.get('purpose');
+            executeMatrixSearch();
+        });
+    </script>
+</body>
+</html>

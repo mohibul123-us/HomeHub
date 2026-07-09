@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Entry | HomeHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: var(--bg-light);">
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-house-chimney" style="color:var(--accent-emerald); margin-right:8px; font-size:20px;"></i>Home<span>Hub</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rent.html">Rent</a>
+                <a href="sell.html">Sell</a>
+                <a href="projects.html">Projects</a>
+                <a href="agents.html">Agents</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="sell.html" class="btn btn-outline" style="border-color:var(--accent-emerald); color:var(--accent-emerald);">Add Listing +</a>
+                <a href="login.html" class="btn btn-primary"><i class="fa-regular fa-user" style="margin-right:8px;"></i>Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-container">
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="tab-login" onclick="switchMode('login')">Sign In</div>
+                <div class="auth-tab" id="tab-signup" onclick="switchMode('signup')">Register</div>
+            </div>
+
+            <div id="auth-alert" class="auth-notify-banner"></div>
+
+            <div class="auth-form-block active" id="block-login">
+                <form id="form-login-element" onsubmit="executeUserLogin(event)">
+                    <div class="filter-group" style="margin-bottom:16px;">
+                        <label class="form-field-label">Account Mail Address</label>
+                        <input type="email" id="login-email" class="form-element-input" placeholder="mohibul@domain.com" required>
+                    </div>
+                    <div class="filter-group" style="margin-bottom:20px;">
+                        <label class="form-field-label">Access Credentials Password</label>
+                        <input type="password" id="login-pass" class="form-element-input" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-emerald" style="width:100%; padding:12px; justify-content:center;">Unlock Access Terminal</button>
+                </form>
+            </div>
+
+            <div class="auth-form-block" id="block-signup">
+                <form id="form-signup-element" onsubmit="executeUserRegistration(event)">
+                    <div class="filter-group" style="margin-bottom:14px;">
+                        <label class="form-field-label">Full Name Verification Identity</label>
+                        <input type="text" id="reg-name" class="form-element-input" placeholder="Mohibul Hasan" required>
+                    </div>
+                    <div class="filter-group" style="margin-bottom:14px;">
+                        <label class="form-field-label">Electronic Mail Route</label>
+                        <input type="email" id="reg-email" class="form-element-input" placeholder="target@domain.com" required>
+                    </div>
+                    <div class="filter-group" style="margin-bottom:20px;">
+                        <label class="form-field-label">Define Security Password</label>
+                        <input type="password" id="reg-pass" class="form-element-input" placeholder="Minimum 6+ secure tokens" minlength="6" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; padding:12px; justify-content:center; background-color:var(--primary-navy);">Initialize Credentials Registry</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Initialization Sequence: Seed a baseline account structural node if empty
+        if (!localStorage.getItem('usersDB')) {
+            const initialSeededUser = [{name: "Mohibul Hasan", email: "admin@homehub.com", pass: "123456"}];
+            localStorage.setItem('usersDB', JSON.stringify(initialSeededUser));
+        }
+
+        function switchMode(target) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form-block').forEach(b => b.classList.remove('active'));
+            document.getElementById('auth-alert').style.display = 'none';
+
+            if(target === 'login') {
+                document.getElementById('tab-login').classList.add('active');
+                document.getElementById('block-login').classList.add('active');
+            } else {
+                document.getElementById('tab-signup').classList.add('active');
+                document.getElementById('block-signup').classList.add('active');
+            }
+        }
+
+        function showAlert(msg, isError = true) {
+            const banner = document.getElementById('auth-alert');
+            banner.innerText = msg;
+            banner.className = `auth-notify-banner ${isError ? 'auth-notify-error' : 'auth-notify-success'}`;
+            banner.style.display = 'block';
+        }
+
+        function executeUserLogin(e) {
+            e.preventDefault();
+            const emailValue = document.getElementById('login-email').value.trim();
+            const passValue = document.getElementById('login-pass').value;
+            const usersArray = JSON.parse(localStorage.getItem('usersDB') || '[]');
+
+            const matchedUser = usersArray.find(u => u.email.toLowerCase() === emailValue.toLowerCase() && u.pass === passValue);
+
+            if (matchedUser) {
+                // Generate access control verification session tokens safely inside browser variables
+                localStorage.setItem('activeSessionToken', 'TRUE_VALIDATED');
+                localStorage.setItem('activeProfileName', matchedUser.name);
+                
+                showAlert("Credentials accepted. Transferring matrix parameters...", false);
+                setTimeout(() => { window.location.href = 'dashboard.html'; }, 1000);
+            } else {
+                showAlert("Access denied! Invalid email registration match or mismatching password sequence.");
+            }
+        }
+
+        function executeUserRegistration(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const pass = document.getElementById('reg-pass').value;
+            const usersArray = JSON.parse(localStorage.getItem('usersDB') || '[]');
+
+            if (usersArray.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+                showAlert("Database indexing constraint breach: Email identity record already cataloged.");
+                return;
+            }
+
+            usersArray.push({name, email, pass});
+            localStorage.setItem('usersDB', JSON.stringify(usersArray));
+            
+            showAlert("Registration tracking validated. Please log in using your new credentials.", false);
+            document.getElementById('form-signup-element').reset();
+            setTimeout(() => { switchMode('login'); }, 1500);
+        }
+    </script>
+</body>
+</html>
